@@ -1,46 +1,298 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SocialConnect</title>
+<title>SocialSpace — Login</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#fafafa;color:#262626}
-header{background:white;border-bottom:1px solid #ddd;padding:16px;text-align:center;font-size:25px;font-weight:bold}
-main{max-width:380px;margin:45px auto;padding:25px;background:white;border:1px solid #ddd;border-radius:12px;text-align:center}
-.logo{font-size:30px;font-weight:bold;margin:10px}
-p{color:#666;line-height:1.5}
-input{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:7px;font-size:15px}
-button{width:100%;padding:12px;background:#0095f6;color:white;border:0;border-radius:7px;font-size:16px;font-weight:bold;margin-top:10px}
-#result{display:none;margin-top:22px;padding:15px;background:#f1f8ff;border-radius:10px}
-.badge{font-size:45px}
-small{display:block;color:#777;margin-top:18px}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #fafafa;
+  color: #262626;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 350px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #dbdbdb;
+  padding: 35px 28px 25px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.logo {
+  font-family: cursive;
+  font-size: 39px;
+  font-weight: bold;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #737373;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 12px 10px;
+  margin: 7px 0;
+  background: #fafafa;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #999;
+}
+
+button {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  margin-top: 14px;
+  background: #0095f6;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  opacity: 0.8;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #737373;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 24px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #dbdbdb;
+}
+
+.notice {
+  margin-top: 18px;
+  color: #737373;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+#result {
+  display: none;
+}
+
+.success-icon {
+  width: 68px;
+  height: 68px;
+  border: 3px solid #22a06b;
+  color: #22a06b;
+  border-radius: 50%;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px auto 22px;
+}
+
+.result-title {
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+
+.result-text {
+  font-size: 14px;
+  color: #737373;
+  line-height: 1.7;
+}
+
+.badge {
+  display: inline-block;
+  background: #e7f7ee;
+  color: #16794b;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin: 18px 0 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 10px;
+  color: #737373;
+  font-size: 11px;
+  line-height: 2;
+}
+
+footer a {
+  color: #737373;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+@media (max-width: 450px) {
+  body {
+    background: white;
+  }
+
+  .card {
+    border: none;
+    padding: 30px 8px;
+  }
+
+  main {
+    padding: 15px 24px;
+  }
+}
 </style>
 </head>
+
 <body>
-<header>SocialConnect</header>
+
 <main>
-<div class="logo">Get Verified ✨</div>
-<p>Enter a display name to preview a verification badge demo.</p>
-<form id="demoForm">
-<input id="username" type="text" placeholder="Choose a display name" maxlength="30" required>
-<button type="submit">Preview Badge</button>
-</form>
-<div id="result">
-<div class="badge">☑️</div>
-<h2 id="welcome"></h2>
-<p>This is only a demo badge. It is not official Instagram verification.</p>
-</div>
-<small>Independent demo website · Not affiliated with Instagram</small>
+  <div class="container">
+
+    <section class="card" id="login">
+      <div class="logo">SocialSpace</div>
+
+      <p class="subtitle">
+        Sign in to your demo account and explore
+        your personal social space.
+      </p>
+
+      <form id="loginForm">
+        <input
+          id="username"
+          type="text"
+          placeholder="Demo username"
+          autocomplete="off"
+          required
+        >
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Demo password"
+          autocomplete="new-password"
+          required
+        >
+
+        <button type="submit">Log In</button>
+      </form>
+
+      <div class="divider">OR</div>
+
+      <p style="font-size:13px;color:#737373;">
+        This is an independent demo website.
+      </p>
+
+      <p class="notice">
+        Never enter your real Instagram password here.
+        Demo credentials are not collected or stored.
+      </p>
+    </section>
+
+    <section class="card" id="result">
+      <div class="success-icon">✓</div>
+
+      <h1 class="result-title">Demo Verification Successful</h1>
+
+      <p class="result-text">
+        Your demo login was successful.<br>
+        This is a local demonstration only.
+      </p>
+
+      <div class="badge">✓ Demo Verified</div>
+
+      <p class="notice">
+        This result is not an official Instagram
+        or Meta verification.
+      </p>
+
+      <button id="backButton">Back to Login</button>
+    </section>
+
+  </div>
 </main>
+
+<footer>
+  <div>
+    <a href="#about">About</a>
+    <a href="#help">Help</a>
+    <a href="#privacy">Privacy</a>
+  </div>
+  <div>© 2026 SocialSpace Demo</div>
+</footer>
+
 <script>
-document.getElementById("demoForm").addEventListener("submit",function(e){
-e.preventDefault();
-const name=document.getElementById("username").value.trim();
-if(!name)return;
-document.getElementById("welcome").textContent="Hello, "+name+"!";
-document.getElementById("result").style.display="block";
+const form = document.getElementById("loginForm");
+const login = document.getElementById("login");
+const result = document.getElementById("result");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const username =
+    document.getElementById("username").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  if (!username || !password) {
+    alert("Please fill in both demo fields.");
+    return;
+  }
+
+  // Demo only: credentials are not sent or stored.
+  form.reset();
+  login.style.display = "none";
+  result.style.display = "block";
 });
+
+document.getElementById("backButton")
+  .addEventListener("click", function() {
+    result.style.display = "none";
+    login.style.display = "block";
+  });
 </script>
+
 </body>
 </html>
