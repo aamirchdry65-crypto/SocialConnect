@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialConnect</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fafafa;color:#262626}
+header{background:white;border-bottom:1px solid #ddd;padding:16px;text-align:center;font-size:25px;font-weight:bold}
+main{max-width:380px;margin:45px auto;padding:25px;background:white;border:1px solid #ddd;border-radius:12px;text-align:center}
+.logo{font-size:30px;font-weight:bold;margin:10px}
+p{color:#666;line-height:1.5}
+input{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;border-radius:7px;font-size:15px}
+button{width:100%;padding:12px;background:#0095f6;color:white;border:0;border-radius:7px;font-size:16px;font-weight:bold;margin-top:10px}
+#result{display:none;margin-top:22px;padding:15px;background:#f1f8ff;border-radius:10px}
+.badge{font-size:45px}
+small{display:block;color:#777;margin-top:18px}
+</style>
+</head>
+<body>
+<header>SocialConnect</header>
+<main>
+<div class="logo">Get Verified ✨</div>
+<p>Enter a display name to preview a verification badge demo.</p>
+<form id="demoForm">
+<input id="username" type="text" placeholder="Choose a display name" maxlength="30" required>
+<button type="submit">Preview Badge</button>
+</form>
+<div id="result">
+<div class="badge">☑️</div>
+<h2 id="welcome"></h2>
+<p>This is only a demo badge. It is not official Instagram verification.</p>
+</div>
+<small>Independent demo website · Not affiliated with Instagram</small>
+</main>
+<script>
+document.getElementById("demoForm").addEventListener("submit",function(e){
+e.preventDefault();
+const name=document.getElementById("username").value.trim();
+if(!name)return;
+document.getElementById("welcome").textContent="Hello, "+name+"!";
+document.getElementById("result").style.display="block";
+});
+</script>
+</body>
+</html>
